@@ -17,7 +17,7 @@ const Menu = () => {
     // Fetch menus and items from backend
     const fetchMenus = async () => {
         try {
-            const response = await axios.get("http://localhost:3015/api/menu");
+            const response = await axios.get("https://assessment-deepnetsoft.onrender.com/api/menu");
             setMenus(response.data); // Set fetched menus state
             setIsLoading(false); // Set loading to false once data is fetched
         } catch (error) {
@@ -29,7 +29,7 @@ const Menu = () => {
     // Fetch items for the selected menu
     const fetchItemsForMenu = async (menuId) => {
         try {
-            const response = await axios.get(`http://localhost:3015/api/items/${menuId}`);
+            const response = await axios.get(`https://assessment-deepnetsoft.onrender.com/api/items/${menuId}`);
             const updatedMenus = [...menus];
             updatedMenus[selectedMenuIndex].items = response.data;
             setMenus(updatedMenus);
@@ -42,7 +42,7 @@ const Menu = () => {
     if (newMenu.name.trim() && newMenu.description.trim()) {
         try {
             // Send POST request to backend to add a new menu
-            const response = await axios.post("http://localhost:3015/api/menu", {
+            const response = await axios.post("https://assessment-deepnetsoft.onrender.com/api/menu", {
                 name: newMenu.name,
                 description: newMenu.description,
             });
@@ -68,7 +68,7 @@ const Menu = () => {
         if (newItem.name.trim() && newItem.description.trim() && newItem.price.trim()) {
             try {
 
-                const response = await axios.post("http://localhost:3015/api/items", {
+                const response = await axios.post("https://assessment-deepnetsoft.onrender.com/api/items", {
                     name: newItem.name,
                     description: newItem.description,
                     price: newItem.price,
